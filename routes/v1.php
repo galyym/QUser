@@ -9,18 +9,6 @@ Route::group(['prefix' => 'v2/{lang}', 'where' => ['lang' => '[kk,ru]{2}']], fun
     Route::post('sign-in', \App\Qamtu\User\Actions\SignInAction::class);
 
     Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => 'jwt'], function () {
-        Route::get('test', function (Request $request, $result){
-            return response([
-                'text' => $result,
-                'data' => $request->all()
-            ]);
-        });
+        Route::post('request', \App\Qamtu\Request\Actions\SentRequestAction::class);
     });
-});
-
-
-Route::get('redis', function (Request $request){
-    $redis = Redis::connection();
-    $redis->set('lara_key', 'Example');
-    return response('success');
 });
