@@ -24,6 +24,7 @@ class FormRequest extends APIRequest
             'family_status' => 'required',
             'sex' => 'max:100',
             'comment' => 'max:1000',
+            'jwt' => 'array',
         ];
     }
 
